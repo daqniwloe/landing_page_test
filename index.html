@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Destino</title>
+  <link rel="stylesheet" href="dist/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+</head>
+<body>
+  <header>
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="section1">
+    <div class="slideshow-container fade slider">
+        <div class="slider-item containers">
+            <img src="src/img/image1.jpg" alt="Slider Image 1">
+            <div class="slider-title">
+              <h2>Ultrices sociosqu libero a dapibus faucibus lacinia condimentum</h2>
+              <p>Accumsan curabitur malesuada aliquam blandit mi ornare aenean lectus nostra</p>
+            </div>
+        </div>
+      
+        <div class="slider-item containers">
+          <img src="src/img/image2.jpg" alt="Slider Image 2">
+            <div class="slider-title">
+            <h2>Lorem ipsum tincidunt tristique donec</h2>
+            <p>Tempor vulputate massa nisi morbi nec sit pellentesque, varius lacus et quis inceptos aenean non ligula</p>
+          </div>
+        </div>
+      
+        <div class="slider-item containers">
+            <img src="src/img/image3.jpg" alt="Slider Image 3">
+            <div class="slider-title">
+              <h2>Dui nulla interdum ultricies</h2>
+              <p>Magna accumsan egestas sociosqu quam sapien tortor viverra amet, vestibulum eget quisque primis</p>
+            </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="section2">
+      <div class="title-section">
+        <h1>Highlight</h1>
+      </div>
+      <div class="highlight-cards">
+        <div class="highlight-card">
+          <img src="src/img/img1.jpg" alt="Imagem 1">
+          <h2>Aenean consequat nulla proin</h2>
+          <p>Nam netus elit dolor eros suspendisse est himenaeos vulputate integer duis, risus lacinia congue diam nam conubia nec placerat at. nullam quisque nostra erat nullam, convallis dolor neque. </p>
+        </div>
+        <div class="highlight-card">
+          <img src="src/img/img2.jpg" alt="Imagem 2">
+          <h2>Vivamus scelerisque tristique elementum</h2>
+          <p>Phasellus gravida aenean urna mi quam aliquam litora feugiat venenatis, donec curabitur tellus non quis ac ultricies lectus sapien vehicula, gravida tempus tristique etiam vehicula imperdiet quis himenaeos.</p>
+        </div>
+        <div class="highlight-card">
+          <img src="src/img/img3.jpg" alt="Imagem 3">
+          <h2>Lorem ipsum imperdiet ullamcorper senectus</h2>
+          <p>Morbi integer fames nec luctus iaculis, platea felis odio sem malesuada eget, nunc tortor nisl rhoncus. sed nec lobortis maecenas per hendrerit nisi purus faucibus aliquet libero,</p>
+        </div>
+      </div>
+    </section class="section3">
+    <div class="title-section">
+      <h1>Contact</h1>
+    </div>
+      <div class="container">
+        <div class="map-container">
+          <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.58685742298!2d-0.26674453568568224!3d51.52852572498531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondres%2C%20Reino%20Unido!5e0!3m2!1spt-BR!2sbr!4v1686614020954!5m2!1spt-BR!2sbr" width="550" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        </div>
+        <div class="form-container">
+            <section id="contact">
+                <h2>Contact Form</h2>
+                <form id="contact-form" action="#" method="POST">
+                  <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                  </div>
+                  <div>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                  </div>
+                  <div>
+                    <button type="submit">Submit</button>
+                  </div>
+                </form>
+              </section>
+        </div>
+      </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<API_KEY>&callback=initMap" async defer></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      var nameInput = document.getElementById('name');
+      var emailInput = document.getElementById('email');
+  
+      var name = nameInput.value.trim();
+      var email = emailInput.value.trim();
+  
+      if (name === '') {
+        alert('Por favor, preencha o campo de nome.');
+        nameInput.focus();
+        return;
+      }
+  
+      if (!validateEmail(email)) {
+        alert('Por favor, digite um e-mail válido.');
+        emailInput.focus();
+        return;
+      }
+  
+      // Se tudo estiver válido, você pode enviar os dados do formulário para o servidor aqui
+  
+      alert('Formulário enviado com sucesso!');
+      nameInput.value = '';
+      emailInput.value = '';
+    });
+  
+    function validateEmail(email) {
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+    function initMap() {
+        // Coordenadas do local que deseja exibir no mapa
+        var location = { lat: -23.550520, lng: -46.633308 };
+    
+        // Opções do mapa
+        var mapOptions = {
+          center: location,
+          zoom: 14
+        };
+    
+        // Criar o mapa
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    
+        // Marcador do local
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          title: "Meu Local"
+        });
+      }
+  </script>
+  <!-- Botão Voltar ao topo -->
+  <div class="back-to-top" id="back-to-top"></div>
+</body>
+<footer>
+    <p>&copy; 2023 Danilo Braz</p>
+</footer>
+</html>
